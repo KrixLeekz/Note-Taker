@@ -3,7 +3,7 @@ const express = require('express')
 //express server
 const app = express()
 //initial port
-var PORT = process.env.PORT || 8000
+const PORT = process.env.PORT || 8000
 
 //express data parsing
 app.use(express.urlencoded({extended: true}))
@@ -11,4 +11,10 @@ app.use(express.json())
 
 
 //router
-require('')
+require('../routes/apiRoutes')(app)
+require('../routes/htmlRoutes')
+
+//server starter
+app.listen(PORT, () => {
+     console.log("Listening on PORT: " + PORT)
+})
